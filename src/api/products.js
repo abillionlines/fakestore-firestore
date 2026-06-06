@@ -10,16 +10,35 @@ const api = axios.create({
   baseURL: "https://fakestoreapi.com",
 });
 
+const handleAxiosError = (err) => {
+  const message =
+    err?.response?.data?.message ||
+    err?.response?.statusText ||
+    err?.message ||
+    "Request failed";
+  const error = new Error(message);
+  if (err?.response?.status) error.status = err.response.status;
+  throw error;
+};
+
 export const fetchProducts = async (category) => {
-  const url =
-    category && category !== "all"
-      ? `/products/category/${category}`
-      : "/products";
-  const { data } = await api.get(url);
-  return data;
+  try {
+    const url =
+      category && category !== "all"
+        ? `/products/category/${category}`
+        : "/products";
+    const { data } = await api.get(url);
+    return data;
+  } catch (err) {
+    handleAxiosError(err);
+  }
 };
 
 export const fetchCategories = async () => {
-  const { data } = await api.get("/products/categories");
-  return data;
+  try {
+    const { data } = await api.get("/products/categories");
+    return data;
+  } catch (err) {
+    handleAxiosError(err);
+  }
 };
