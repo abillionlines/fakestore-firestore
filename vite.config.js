@@ -1,0 +1,13 @@
+/*
+Vite configuration
+- Sets up Vite with the React plugin and Tailwind integration for development and build.
+*/
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
