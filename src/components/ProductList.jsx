@@ -5,7 +5,7 @@ ProductList
 - Renders loading / error states and maps products to `ProductCard`.
 */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts, fetchCategories } from "../api/products";
 import ProductCard from "./ProductCard";
