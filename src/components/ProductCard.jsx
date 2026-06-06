@@ -4,7 +4,7 @@ ProductCard
 - Handles image fallback and dispatches `addToCart` (Redux) when the Add button is clicked.
 */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 import { Star, ShoppingCart } from "lucide-react";
